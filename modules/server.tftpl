@@ -1,0 +1,7 @@
+#!/bin/bash
+sudo apt-get update -y
+sudo apt-get install apache2 -y
+sudo sed -i 's/${app_port}/${app_target_port}/' /etc/apache2/ports.conf
+sudo service apache2 restart
+my_public_ip=$(curl http://checkip.amazonaws.com)
+sudo echo "My IP: $my_public_ip" > /var/www/html/index.html
